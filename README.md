@@ -2,8 +2,6 @@ Hacker is a console DAW for a monks of Perl and UNIX!
 
 Release just for demosceners and professional sound engeeners.
 
-All project developed by Yahwe, Ivan Trunaev, Russia.
-
 # Getting Code
 
 ```
@@ -133,3 +131,7 @@ Perl had a much memory leaks, and on big projects Hacker crushed. Sorry, I don't
 # For demosceners
 
 Please, don't make release, based on my projects! It's rip of my creative! Code by yourself!
+
+# Credits
+
+All project developed by Yahwe, Ivan Trunaev, Russia.
