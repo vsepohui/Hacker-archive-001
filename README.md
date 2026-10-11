@@ -10,7 +10,7 @@ All project developed by Yahwe, Ivan Trunaev, Russia.
 git clone https://github.com/vsepohui/Hacker
 ```
 
-# Install
+# Installation
 
 ## Dependencies
 
