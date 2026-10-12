@@ -1,4 +1,4 @@
-package Hacker::Player::ffmpeg;
+package Hacker::Player::aplay;
 
 use 5.022;
 use warnings;
@@ -27,7 +27,7 @@ sub play {
 
 	# Let's play audio by aplay utility
 	my $rate = $self->sample_rate;
-	`ffplay -autoexit -loglevel quiet -nodisp -f s16le -ar $rate $filename`;
+	`aplay -q -f s16_le -r $rate $filename`;
 
 	# Remove tmp PCM file
 	unlink $filename;
