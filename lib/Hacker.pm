@@ -3,6 +3,8 @@ package Hacker;
 use 5.022;
 use warnings;
 
+use experimental 'smartmatch';
+
 use Exporter qw(import);
 our @EXPORT = qw(sample sampler speech seq sequenser mix mixer rev crop silence eq distortion transpose pitch delay noise process_command_line triangle sine cos_p sun saw load gain virtual chip tremollo tremollo2 e limit);
 
