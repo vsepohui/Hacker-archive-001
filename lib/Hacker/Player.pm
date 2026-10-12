@@ -3,8 +3,6 @@ package Hacker::Player;
 use 5.022;
 use warnings;
 
-use feature "smartmatch";
-
 use base 'Hacker';
 
 
