@@ -2,40 +2,10 @@ Hacker is a console DAW for a monks of Perl and UNIX!
 
 Release just for demosceners and professional sound engeeners.
 
-All project developed by Yahwe, Ivan Trunaev, Russia.
-
-# Getting Code
+# Installation
 
 ```
-git clone https://github.com/vsepohui/Hacker
-```
-
-# Install
-
-## Dependencies
-
-### On Debian / Ubuntu
-
-```
-sudo apt install perl ffmpeg espeak-ng
-```
-
-### On Arch Linux / Manjaro
-
-```
-sudo pacman -S perl ffmpeg espeak-ng
-```
-
-### On MacOS
-
-```
-brew install perl ffmpeg espeak-ng
-```
-## Install Hacker
-
-```
-perl Makefile.PL
-sudo make install
+curl -s https://vsepohui.ru/hacker.sh | sudo sh
 ```
 
 
@@ -133,3 +103,7 @@ Perl had a much memory leaks, and on big projects Hacker crushed. Sorry, I don't
 # For demosceners
 
 Please, don't make release, based on my projects! It's rip of my creative! Code by yourself!
+
+# Credits
+
+All project developed by Yahwe, Ivan Trunaev, Russia.
