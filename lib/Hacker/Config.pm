@@ -40,7 +40,7 @@ sub new {
 			
 			my $dump = Dumper $config;
 		
-			$dump =~ s/\$VAR1 = //;
+			$dump =~ s/^\$VAR1 = //;
 			my $fo;
 			open $fo, '>', $f;
 			print $fo $dump;
