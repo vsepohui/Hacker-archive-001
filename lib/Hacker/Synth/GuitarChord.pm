@@ -1,4 +1,4 @@
-package Hacker::Synth::StringChord;
+package Hacker::Synth::GuitarChord;
 
 use 5.022;
 use warnings;
@@ -8,7 +8,6 @@ use base 'Hacker::Synth';
 use Hacker::Effect::Transpose;
 use Hacker::Mixer;
 
-use constant GUITAR => [qw/-8 -3 2 7 11 16/];
 
 sub new {
 	my $class  = shift;
@@ -31,7 +30,7 @@ sub signal {
 	my $i = 0;
 	for (split /,/, $chord) {
 		if ($_ ne 'x' && $_ ne '') {
-			push @mix, [Hacker::Effect::Transpose->new($_+$self->GUITAR->[$_])->process(@{$self->{sample}})];
+			push @mix, [Hacker::Effect::Transpose->new($_+$self->config->{GUITAR}->[$_])->process(@{$self->{sample}})];
 		}
 		$i ++;
 	}

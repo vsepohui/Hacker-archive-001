@@ -23,6 +23,7 @@ use constant DEFAULT_CONFIG => {
 		sus2	=> [qw/0 2 5/],
 		sus4	=> [qw/0 5 7/],
 	},
+	GUITAR => [qw/-8 -3 2 7 11 16/],
 };
 
 
