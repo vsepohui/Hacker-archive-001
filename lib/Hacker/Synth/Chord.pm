@@ -37,7 +37,7 @@ sub gamma {
 	} elsif ($m eq 'm7') {
 		return qw/0 4 8/;
 	} elsif ($m eq 'V') {
-		return qw/0 7/;
+		return qw/0 7 12/;
 	}
 	
 	die "Wrong gamma code $m";
