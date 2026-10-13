@@ -4,7 +4,7 @@ use 5.022;
 use warnings;
 
 use Exporter qw(import);
-our @EXPORT = qw(sample sampler speech seq sequenser mix mixer rev crop silence eq distortion transpose pitch delay noise process_command_line triangle sine cos_p sun saw load gain virtual chip tremollo tremollo2 e limit);
+our @EXPORT = qw(sample sampler speech chord seq sequenser mix mixer rev crop silence eq distortion transpose pitch delay noise process_command_line triangle sine cos_p sun saw load gain virtual chip tremollo tremollo2 e limit);
 
 use Getopt::Long qw(GetOptions);
 
@@ -17,6 +17,7 @@ use Hacker::Synth::CosPart;
 use Hacker::Synth::Triangle;
 use Hacker::Synth::Sampler;
 use Hacker::Synth::Speech;
+use Hacker::Synth::Chord;
 use Hacker::Synth::Sequensor;
 use Hacker::Synth::Noise;
 use Hacker::Synth::Silence;
@@ -214,6 +215,13 @@ sub seq {
 }
 
 # Accessor
+sub chord {
+	my $chord = pop;
+	my @opts    = @_;
+	return Hacker::Synth::Chord->new(@opts)->sig($chord);
+}
+
+# Accessor
 sub sequenser {
 	my $pattern = pop;
 	my @opts    = @_;
@@ -292,7 +300,7 @@ sub chip {
 # Accessor
 sub crop {
 	my $length = pop;
-
+	
 	return Hacker::Effect::Crop->new($length)->process(@_);
 }
 
