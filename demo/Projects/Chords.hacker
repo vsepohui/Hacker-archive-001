@@ -17,6 +17,6 @@ eq ((mix \@bass, \@rythm, [gain @solo, 0.7]), {
 	low_freq 	=> 880,
 	high_freq 	=> 5000,
 	low_gain 	=> 0.1,
-	mid_gain	=> 1.0s,
+	mid_gain	=> 1.0,
 	high_gain	=> 0.1,
 });
