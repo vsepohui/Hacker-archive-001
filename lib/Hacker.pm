@@ -131,6 +131,9 @@ sub parse_note {
 		$octave = $2;
 	}
 	
+	# Fix B
+	$note = 'H' if $note eq 'B';
+	
 	# Validation note
 	confess "Wrong note: $note" unless exists $notes{$note};
 	
