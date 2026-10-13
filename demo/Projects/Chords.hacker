@@ -1,4 +1,4 @@
-my @sample = sine 12, 5;
+my @sample = sine 'C5', 5;
 
 my @song = qw/AV FV CV EV/;
 
