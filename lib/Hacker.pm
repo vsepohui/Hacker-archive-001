@@ -132,7 +132,7 @@ sub parse_note {
 	}
 	
 	# Fix B
-	$note = 'H' if $note eq 'B';
+	$note = $self->config->{NOTE_B_TO_NOTE} if $note eq 'B';
 	
 	# Validation note
 	confess "Wrong note: $note" unless exists $notes{$note};
