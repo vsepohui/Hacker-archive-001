@@ -3,5 +3,5 @@ my @sample = sine 'C5', 5;
 (
 	map {
 		crop (chord (\@sample, $_), 1),
-	}  qw(AmV FV CV EV)
+	}  ('D/F#', 'D/H')
 ) x 4;

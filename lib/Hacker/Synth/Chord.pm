@@ -25,22 +25,59 @@ sub new {
 }
 
 sub gamma {
-	my $self = shift;
-	my $m 	 = shift;
+	my $self  = shift;
+	my $chord = shift;
+	
+	my @notes;
+
+	my ($base, $m) = $chord =~ /^(\w\#?)(.*)$/i;
+	my $add_bass = undef;
+	if ($m =~ /^(.*)\/(\w\#?)$/) {
+		$m = $1;
+		$add_bass = $2;
+	}
+
+	$m ||= 'M';
 	
 	if ($m eq 'M' ) {
-		return qw/0 2 3/
+		@notes = qw/0 2 3/
 	} elsif ($m eq 'm') {
-		return qw/0 2 3/;
+		@notes = qw/0 2 3/;
 	} elsif ($m eq '7') {
-		return qw/0 5 8/;
+		@notes = qw/0 5 8/;
 	} elsif ($m eq 'm7') {
-		return qw/0 4 8/;
+		@notes = qw/0 4 8/;
 	} elsif ($m eq 'V' || $m eq 'mV') {
-		return qw/0 7 12/;
+		@notes = qw/0 7 12/;
+	} else {
+		die "Wrong chord $chord $m";
+	}
+
+	
+	my @gamma;
+	my $i = 0;
+	for my $ch (@{$self->CHORDS()}) {
+		if ($base eq $ch) {
+			@gamma = map {$i + $_} @notes;
+			last;
+		}
+		$i ++;
 	}
 	
-	die "Wrong gamma code $m";
+	if ($add_bass) {
+		$i = 0;
+		for my $n (@{$self->CHORDS()}) {
+			if ($add_bass eq $n) {
+				$gamma[0] = $i;
+			}
+			$i ++;
+		}
+	}
+	
+	die "Wrong chord $chord" unless @gamma;
+	
+	return @gamma;
+	
 }
 
 sub signal {
@@ -48,19 +85,8 @@ sub signal {
 	my $chord = shift;
 	
 	my $i = 0;
-	my @gamma = (); 
+	my @gamma = $self->gamma($chord);
 
-	my ($base, $code) = $chord =~ /^(\w\#?)(.*)$/i;
-	$code ||= 'M';
-	
-	for my $ch (@{$self->CHORDS()}) {
-		if ($base eq $ch) {
-			@gamma = map {$i + $_} $self->gamma($code);
-			last;
-		}
-		$i ++;
-	}
-	
 	die "Wrong chord $chord" unless @gamma;
 		
 	my $s = $self->{sample};
