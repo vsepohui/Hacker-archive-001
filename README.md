@@ -36,7 +36,7 @@ hacker -e "chip sine"
 Console RAW output and play a sound by an ffplay util:
 
 ```
-hacker -e "chip sine" - | ffplay -autoexit -loglevel quiet -nodisp -f s16le -ar 44100 -
+hacker -e "chip sine" - | aplay -q-f s16_le -r 44100
 ```
 
 Console input:
@@ -47,7 +47,7 @@ echo "chip sine" | hacker
 
 Console input and output:
 ```
-echo "chip sine" | hacker | ffplay -autoexit -loglevel quiet -nodisp -f s16le -ar 44100 -
+echo "chip sine" | hacker | aplay -q-f s16_le -r 44100
 ```
 
 
