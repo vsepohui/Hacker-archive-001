@@ -79,19 +79,7 @@ sub gamma {
 
 	$m ||= 'M';
 	
-	if ($m eq 'M' ) {
-		@notes = qw/0 2 3/
-	} elsif ($m eq 'm') {
-		@notes = qw/0 2 3/;
-	} elsif ($m eq '7') {
-		@notes = qw/0 5 8/;
-	} elsif ($m eq 'm7') {
-		@notes = qw/0 4 8/;
-	} elsif ($m eq 'V' || $m eq 'mV') {
-		@notes = qw/0 7 12/;
-	} else {
-		die "Wrong chord $chord $m";
-	}
+	@notes = @{$self->config->{GAMMAS}->{$m}} or die "Wrong chord $chord $m";
 
 	
 	my $n = $self->parse_note($base);
