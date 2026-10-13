@@ -44,7 +44,7 @@ sub render_sample {
 	for (@chunks) {
 		my $s;
 
-		my ($left, $right) = unpack('s<s<', $_);
+		my ($left, $right) = unpack('s*', $_);
 		$s = $left;
 		
 		push @s, $s / $max;
