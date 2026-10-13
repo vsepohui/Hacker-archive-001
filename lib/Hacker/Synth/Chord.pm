@@ -23,6 +23,22 @@ sub new {
 	return bless $self, $class;
 }
 
+sub gamma {
+	my $self = shift;
+	my $m 	 = shift;
+	
+	if ($m eq 'M' ) {
+		return qw/0 2 3/
+	} elsif ($m eq 'm') {
+		return qw/0 2 3/;
+	} elsif ($m eq '7') {
+		return qw/0 5 8/;
+	} elsif ($m eq 'm7') {
+		return qw/0 4 8/;
+	}
+	
+	die "Wrong gamma code $m";
+}
 
 sub signal {
 	my $self  = shift;
@@ -30,11 +46,14 @@ sub signal {
 	
 	my $i = 0;
 	my @gamma = (); 
+
+	my ($base, $code) = $chord =~ /^(\w\#?)(.*)$/i;
+	$code ||= 'M';
+	
 	for my $ch (@{$self->CHORDS()}) {
-		if ($chord eq $ch) {
-			@gamma = map {$i + $_} qw/0 2 3/;
-		} elsif ($chord eq ($ch . 'm')) {
-			@gamma = map {$i + $_} qw/0 2 4/;
+		if ($base eq $ch) {
+			@gamma = map {$i + $_} $self->gamma($code);
+			last;
 		}
 		$i ++;
 	}
@@ -42,7 +61,7 @@ sub signal {
 	die "Wrong chord $chord" unless @gamma;
 		
 	my $s = $self->{sample};
-	my @mix = map {[Hacker::Effect::Transpose->new($_)->process(@{$self->{sample}})]} @gamma;
+	my @mix = reverse map {[Hacker::Effect::Transpose->new($_)->process(@{$self->{sample}})]} @gamma;
 	
 	return Hacker::Mixer->new(@mix)->mix;
 }
