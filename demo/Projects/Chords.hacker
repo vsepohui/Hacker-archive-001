@@ -1,6 +1,6 @@
 my @sample = sine 'C5', 5;
 
-my @song = qw/AV FV CV EV/;
+my @song = qw/AmV FV CV EV/;
 
 (
 	map {
