@@ -13,7 +13,13 @@ my @bass	= chip (((seq (\@c4, $bpm,'-3,-3,-3,-3,-7,-7,-7,-7,0,0,0,0,-8,-8,-8,-8'
 my @rythm  	= distortion (((seq (\@_am, $bpm, '0,#,0,0,0'), seq (\@_f, $bpm, '0,#,0,0,0'), seq (\@_c, $bpm, '0,0,0,0,0'), seq (\@_e, $bpm, '0,.,0,0,0')) x 16), 0.9);
 my @solo  	= distortion (((seq (\@c, $bpm, '0,#,0,-1,0,#,0,-1,0,-1,-3,-5,#,0,-1')) x 32), 0.1);
 
-eq ((mix \@bass, \@rythm, [gain @solo, 0.7]), {
+eq ((
+	mix 
+		\@bass, 
+		\@rythm, 
+		[gain @solo, 0.7],
+		[speech ('Granitzy Klytch perelomlen popolam, a nash batyushka Lenin - sovsem usohh! On razlojilsya na plesen i na lipovy med, a perestroika vse idet i det po planu')->play(-36)],
+	), {
 	low_freq 	=> 880,
 	high_freq 	=> 5000,
 	low_gain 	=> 0.1,
