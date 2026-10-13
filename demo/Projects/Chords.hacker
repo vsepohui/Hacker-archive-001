@@ -18,7 +18,7 @@ eq ((
 		\@bass, 
 		\@rythm, 
 		[gain @solo, 0.7],
-		[speech ('Granitzy Klytch perelomlen popolam, a nash batyushka Lenin - sovsem usohh! On razlojilsya na plesen i na lipovy med, a perestroika vse idet i det po planu')->play(-36)],
+		[speech ('Granitzy Klytch perelomlen popolam, a nash batyushka Lenin - sovsem usohh! On razlojilsya na plesen i na lipovy med, a perestroika vse idet i det po planu, i vsya gryz prevratilas v goly led, i vse ide to planu! vse idet po planu!')->play(-36)],
 	), {
 	low_freq 	=> 880,
 	high_freq 	=> 5000,
