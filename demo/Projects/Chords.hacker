@@ -1,9 +1,9 @@
 my @sample = sine 12, 5;
 
-my @song = qw/Am F C E/;
+my @song = qw/AV FV CV EV/;
 
 (
 	map {
-		crop chord ([@sample], $_), 1,
+		crop (chord (\@sample, $_), 1),
 	} @song
 ) x 4;
