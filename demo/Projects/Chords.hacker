@@ -1,7 +1,7 @@
-my @sample = sine 'C5', 5;
+my @sample = sine 'E6', 5;
 
 (
 	map {
 		crop (chord (\@sample, $_), 1),
-	} split ' ', 'D/F# D/H E E'
+	} split / /, 'F#mV C#V AV CV'
 ) x 4;

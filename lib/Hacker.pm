@@ -78,7 +78,6 @@ sub gamma {
 	}
 
 	$m ||= 'M';
-	
 	@notes = @{$self->config->{GAMMAS}->{$m}} or die "Wrong chord $chord $m";
 
 	

@@ -31,7 +31,7 @@ sub signal {
 
 	die "Wrong chord $chord" unless @gamma;
 	
-	@gamma = @gamma[0..2];
+	#@gamma = @gamma[0..2];
 		
 	my $s = $self->{sample};
 	my @mix;
