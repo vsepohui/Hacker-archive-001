@@ -3,8 +3,6 @@ package Hacker;
 use 5.022;
 use warnings;
 
-use experimental 'smartmatch';
-
 use Exporter qw(import);
 our @EXPORT = qw(sample sampler speech seq sequenser mix mixer rev crop silence eq distortion transpose pitch delay noise process_command_line triangle sine cos_p sun saw load gain virtual chip tremollo tremollo2 e limit);
 
@@ -42,6 +40,8 @@ use Hacker::Project;
 use Math::Trig qw(asin acos);
 
 use Carp;
+
+our $VERSION = '0.6';
 
 
 # Constructor
@@ -120,7 +120,8 @@ sub driver {
 	# If gettet, setup new value
 	if ($driver) {
 		# Validate value by config
-		confess "Wrong driver \"$driver\"" unless ($driver ~~ $self->config->{DRIVERS});
+		my %drivers = map {$_ => 1} @{$self->config->{DRIVERS}};
+		confess "Wrong driver \"$driver\"" unless $drivers{$driver};
 		$self->{driver} = $driver;
 	}
 	

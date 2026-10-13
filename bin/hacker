@@ -6,14 +6,14 @@ use warnings;
 use FindBin qw($Bin);
 use lib "$Bin/../lib";
 
+use Pod::Usage qw(pod2usage);
 use Cwd qw(getcwd);
 use Hacker;
 
-my $usage = "Usage:\n\t$0 [--driver=...] [--help|-h] [--version|-v] [--input|-i=file.hacker] [--output|-o=file.pcm] [--exec|-e=code] [project-file.hacker] [-]";
-my %args = process_command_line(qw/driver=s i|input=s o|output=s e|exec=s h|help v|version/, $usage);
+my %args = process_command_line(qw/driver=s i|input=s o|output=s e|exec=s h|help v|version/, usage());
 
 if ($args{version}) {
-	say "Hacker 0.3b";
+	say "Hacker $Hacker::VERSION";
 	exit;
 }
 
@@ -51,4 +51,43 @@ if (my $file = $args{output}) {
 	$hacker->play(@signal);
 }
 
+sub usage {
+        my $file = @_ ? "$_[0]" : (caller)[1];
+        open my $handle, '>', \my $output;
+        pod2usage -exitval => 'noexit', -input => $file, -output => $handle;
+        $output =~ s/^.*\n|\n$//;
+        $output =~ s/\n$//g;
+        return $output;
+}
+
 1;
+
+=encoding utf8
+
+=head1 NAME
+
+hacker - Console DAW for music engeeners
+
+=head1 SYNOPSIS
+
+    Usage: hacker [OPTIONS] [project-file.hacker] [-] [-]
+    
+        hacker -e "chip sine" -o filename.raw
+        hacker -i project.hacker -o filename.raw
+        echo "chip sine" | hacker | aplay -q -f s16_le -r 44100 -
+   		 
+    Options:
+  
+        --input, -i       Input project file
+        --output, -o      Output RAW PCM Mono 16 bit 44100 Hz file
+        --exec, -e        Execure project code from console
+        --help, -h        Show help
+        --version, -v     Show version
+
+=AUTHOR
+
+Hacker developed by Ivan Trunaev, Russia, 2026
+
+Contacts <ivan@trunaev.ru>
+
+=cut

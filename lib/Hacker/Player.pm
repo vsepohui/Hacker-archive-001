@@ -36,7 +36,8 @@ sub init {
 	my $driver = shift // Hacker->config->{DEFAULT_DRIVER};
 	
 	# Validating driver by config
-	die "Wrond driver \"$driver\"" unless $driver ~~ Hacker->config->{DRIVERS};
+	my %drivers = map {$_ => 1} @{Hacker->config->{DRIVERS}};
+	die "Wrong driver \"$driver\"" unless $drivers{$driver};
 
 	# Compare child playe class value
 	my $c = $class.'::'.$driver;

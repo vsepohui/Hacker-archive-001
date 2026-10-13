@@ -13,7 +13,8 @@ sub generate {
 	my ($x, $y);
 	
 	my $step = int $offset;
-	if ($step % 4 ~~ [0, 3]) {
+	my $t = $step % 4;
+	if ($t == 0 || $t == 3) {
 		$x = $offset - $step;
 		$y = 1;
 	} else {
