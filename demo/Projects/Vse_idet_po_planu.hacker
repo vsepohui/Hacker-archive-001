@@ -9,9 +9,9 @@ my @_f	= crop (git (\@sample, '1,3,3'), 1);
 my @_c	= crop (git (\@sample, 'x,3,2,0'), 1);
 my @_e 	= crop (git (\@sample, '0,2,2'), 1);
 
-my @bass	= chip (((seq (\@c4, $bpm,'-3,-3,-3,-3,-7,-7,-7,-7,0,0,0,0,-8,-8,-8,-8'))x16));
-my @rythm  	= distortion (((seq (\@_am, $bpm, '0,#,0,0,0'), seq (\@_f, $bpm, '0,#,0,0,0'), seq (\@_c, $bpm, '0,0,0,0,0'), seq (\@_e, $bpm, '0,.,0,0,0')) x 16), 0.9);
-my @solo  	= distortion (((seq (\@c, $bpm, '0,#,0,-1,0,#,0,-1,0,-1,-3,-5,#,0,-1')) x 32), 0.1);
+my @bass	= chip (((seq (\@c4, $bpm,'-3,-3,-3,-3,-7,-7,-7,-7,0,0,0,0,-8,-8,-8,-8'))x32));
+my @rythm  	= distortion (((seq (\@_am, $bpm, '0,#,0,0,0'), seq (\@_f, $bpm, '0,#,0,0,0'), seq (\@_c, $bpm, '0,0,0,0,0'), seq (\@_e, $bpm, '0,.,0,0,0')) x 32), 0.9);
+my @solo  	= distortion (((seq (\@c, $bpm, '0,#,0,-1,0,#,0,-1,0,-1,-3,-5,#,0,-1')) x 64), 0.1);
 
 eq ((
 	mix 
@@ -56,7 +56,7 @@ Ja prosnulsja sredi nochi i ponjal, chto
 Vsjo idet po planu...
 Vsjo idet po planu...		
 		
-		])->play(-36)],
+		])->play(0)],
 	), {
 	low_freq 	=> 880,
 	high_freq 	=> 5000,
