@@ -33,13 +33,8 @@ sub load_sample {
 
 	my @chunks = unpack("s*", $out);
 
-	my @s;
-	my $max = 32767;	
-	for (@chunks) {
-		push @s, $_ / $max;
-	}
-
-	$self->{sample} = \@s;
+	my $max = 32767;
+	$self->{sample} = [map {$_ / $max} @chunks];
 }
 
 sub signal {

@@ -32,25 +32,10 @@ sub render_sample {
 	my (undef, $file) = tempfile();
 	
 	`espeak-ng "$text" -w $file`;
-
-	my $out = `ffmpeg -loglevel quiet -i $file -f s16le -acodec pcm_s16le pipe:1`;
+	
+	$self->load_sample($file);
 	
 	unlink $file;
-
-	my @chunks = unpack("(a4)*", $out);
-
-	my @s;
-	my $max = 32767;	
-	for (@chunks) {
-		my $s;
-
-		my ($left, $right) = unpack('s*', $_);
-		$s = $left;
-		
-		push @s, $s / $max;
-	}
-
-	$self->{sample} = \@s;
 }
 
 1;
