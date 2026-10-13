@@ -36,7 +36,7 @@ sub gamma {
 		return qw/0 5 8/;
 	} elsif ($m eq 'm7') {
 		return qw/0 4 8/;
-	} elsif ($m eq 'V') {
+	} elsif ($m eq 'V' || $m eq 'mV') {
 		return qw/0 7 12/;
 	}
 	
