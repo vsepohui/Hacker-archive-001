@@ -3,7 +3,6 @@ package Hacker::Config;
 use 5.022;
 use warnings;
 
-use FindBin qw($Bin);
 use Data::Dumper;
 
 use constant DEFAULT_CONFIG => {
