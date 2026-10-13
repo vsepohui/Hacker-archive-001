@@ -31,12 +31,9 @@ sub render_sample {
 	
 	my (undef, $file) = tempfile();
 	
-	$file .= '.wav';
-	
 	`espeak-ng "$text" -w $file`;
 
-
-	my $out = `ffmpeg -loglevel quiet -i $file  pipe:1`;
+	my $out = `ffmpeg -loglevel quiet -i $file -f s16le -acodec pcm_s16le pipe:1`;
 	
 	unlink $file;
 

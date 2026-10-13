@@ -31,17 +31,12 @@ sub load_sample {
 
 	my $out = `ffmpeg -loglevel quiet -i $file -f s16le -acodec pcm_s16le pipe:1`;
 
-	my @chunks = unpack("(a4)*", $out);
+	my @chunks = unpack("s<*", $out);
 
 	my @s;
 	my $max = 32767;	
 	for (@chunks) {
-		my $s;
-
-		my ($left, $right) = unpack('s<s<', $_);
-		$s = $left;
-		
-		push @s, $s / $max;
+		push @s, $_ / $max;
 	}
 
 	$self->{sample} = \@s;
