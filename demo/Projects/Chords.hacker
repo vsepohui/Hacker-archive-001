@@ -1,7 +1,16 @@
-my @sample = sine 'E6', 5;
+my @sample = sine 'C6', 5;
+my @c = sine 'C8', 5;
+my @c4 = sine 'C6', 5;
 
-(
-	map {
-		crop (chord (\@sample, $_), 1),
-	} split / /, 'F#mV C#V AV CV'
-) x 4;
+my $bpm = 210;
+
+my @_am	= crop (git (\@sample, 'x,0,2,2'), 1); 
+my @_f	= crop (git (\@sample, '1,3,3'), 1);
+my @_c	= crop (git (\@sample, 'x,3,2,0'), 1);
+my @_e 	= crop (git (\@sample, '0,2,2'), 1);
+
+my @bass	= chip (((seq (\@c4, $bpm,'-3,-3,-3,-3,-7,-7,-7,-7,0,0,0,0,-8,-8,-8,-8'))x16));
+my @rythm  	= distortion (((seq (\@_am, $bpm, '0,#,0,0,0'), seq (\@_f, $bpm, '0,#,0,0,0'), seq (\@_c, $bpm, '0,0,0,0,0'), seq (\@_e, $bpm, '0,.,0,0,0')) x 16), 0.9);
+my @solo  	= distortion (((seq (\@c, $bpm, '0,#,0,-1,0,#,0,-1,0,-1,-3,-5,#,0,-1')) x 32), 0.1);
+
+mix \@bass, \@rythm, [gain @solo, 0.7];
