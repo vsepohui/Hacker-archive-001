@@ -18,7 +18,45 @@ eq ((
 		\@bass, 
 		\@rythm, 
 		[gain @solo, 0.7],
-		[speech ('Granitzy Klytch perelomlen popolam, a nash batyushka Lenin - sovsem usohh! On razlojilsya na plesen i na lipovy med, a perestroika vse idet i det po planu, i vsya gryz prevratilas v goly led, i vse ide to planu! vse idet po planu!')->play(-36)],
+		[speech (q[
+
+Granicy kljuch perelomlen popolam,
+A nash batjushka Lenin sovsem usop,
+On razlozhilsja na plesen' i na lipovyj mjod,
+A perestrojka vse idjot i idjot po planu,
+A vsja grjaz' prevratilas' v golyj ljod.
+I vsjo idjot po planu.
+A moja dusha zahotela na pokoj,
+Ja obeshhal ej ne uchastvovat' v voennoj igre,
+No na furazhke na moej serp i molot i zvezda,
+Kak jeto trogatel'no serp i molot i zvezda,
+Lihoj fonar' ozhidanija motaetsja,
+I vsjo idjot po planu...
+Vsjo idjot po planu...
+A moej zhenoj nakormili tolpu,
+Mirovym kulakom rastoptali ej grud',
+Vsenarodnoj svobodoj rasterzali ej plot',
+Tak zakopajte zh ejo vo Hriste! Ved'
+Vsjo idjot po planu...
+Vsjo idjot po planu...
+Odin lish' dedushka Lenin horoshij byl vozhd',
+A vse drugie ostal'nye takoe der'mo,
+A vse drugie vragi takie duraki,
+Nad rodnoju nad otchiznoj besnovatyj sneg shjol,
+Ja kupil zhurnal Koreja tam tozhe horosho,
+Tam tovarishh Kim Ir Sen, tam tozhe chto u nas,
+Ja uveren chto u nih tozhe samoe
+I vsjo idjot po planu...
+Vsjo idjot po planu...
+A pri kommunizme vse budet zae.is',
+On nastupit skoro, nado tol'ko podozhdat',
+Tam vse budet besplatno, tam vsjo budet v kajf,
+Tam navernoe voobshhe ne nado budet umirat',
+Ja prosnulsja sredi nochi i ponjal, chto
+Vsjo idet po planu...
+Vsjo idet po planu...		
+		
+		])->play(-36)],
 	), {
 	low_freq 	=> 880,
 	high_freq 	=> 5000,
