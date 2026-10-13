@@ -6,6 +6,7 @@ use warnings;
 use base 'Hacker::Synth';
 
 use Hacker::Effect::Transpose;
+use Hacker::Effect::Gainer;
 use Hacker::Mixer;
 
 use constant CHORDS => ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'H'];
@@ -35,6 +36,8 @@ sub gamma {
 		return qw/0 5 8/;
 	} elsif ($m eq 'm7') {
 		return qw/0 4 8/;
+	} elsif ($m eq 'V') {
+		return qw/0 7/;
 	}
 	
 	die "Wrong gamma code $m";
@@ -61,7 +64,16 @@ sub signal {
 	die "Wrong chord $chord" unless @gamma;
 		
 	my $s = $self->{sample};
-	my @mix = reverse map {[Hacker::Effect::Transpose->new($_)->process(@{$self->{sample}})]} @gamma;
+	my @mix;
+	
+	my $vol = 1;
+	for (@gamma) {
+		my $g = Hacker::Effect::Gainer->new(value => $vol);
+		push @mix,[
+			$g->process(Hacker::Effect::Transpose->new($_)->process(@{$self->{sample}}))
+		];
+		#$i -= 0.5;
+	}
 	
 	return Hacker::Mixer->new(@mix)->mix;
 }
