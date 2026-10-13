@@ -94,27 +94,11 @@ sub gamma {
 	}
 
 	
-	my @gamma;
-	my $i = 0;
-	
-	my $notes = $self->config->{NOTES};
-	
-	for my $ch (@{$notes}) {
-		if ($base eq $ch) {
-			@gamma = map {$i + $_} @notes;
-			last;
-		}
-		$i ++;
-	}
+	my $n = $self->parse_note($base);
+	my @gamma = map {$n + $_} @notes;
 	
 	if ($add_bass) {
-		$i = 0;
-		for my $n (@{$notes}) {
-			if ($add_bass eq $n) {
-				$gamma[0] = $i;
-			}
-			$i ++;
-		}
+		$gamma[0] = $self->parse_note($add_bass);
 	}
 	
 	die "Wrong chord $chord" unless @gamma;
@@ -155,7 +139,7 @@ sub parse_note {
 	my $octave = 4;
 	
 	# Parse string note
-	if ($note =~ /^(\w\#?)(\d*)$/) {
+	if ($note =~ /^(\w\#?)(\d+)$/) {
 		$note   = uc $1;
 		$octave = $2;
 	}
