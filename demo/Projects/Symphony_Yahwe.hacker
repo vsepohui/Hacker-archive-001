@@ -1,13 +1,13 @@
-my @c = sine 'C5', 8;
+#my @c = sample ('../Samples/sound_keyboard_staff/c1.mp3')->play(12);
 
-my @e4 = crop pitch (@c, 4),  0.8;
-my @b6 = crop pitch (@c, 23), 0.8;
+my @e4 = crop sample ('../Samples/sound_keyboard_staff/e1.mp3')->play(12), 0.8;
+my @b6 = crop sample ('../Samples/sound_keyboard_staff/b3.mp3')->play(12), 0.8;
 
-my @f5 = crop pitch (@c, 17), 0.8;
-my @b4 = crop pitch (@c, 11), 0.8;
+my @f5 = crop sample ('../Samples/sound_keyboard_staff/f2.mp3')->play(12), 0.8;
+my @b4 = crop sample ('../Samples/sound_keyboard_staff/b1.mp3')->play(12), 0.8;
 
-my @e5 = crop pitch (@c, 16), 0.8;
-my @a4 = crop pitch (@c, 9),  0.8;
+my @e5 = crop sample ('../Samples/sound_keyboard_staff/e2.mp3')->play(12), 0.8;
+my @a4 = crop sample ('../Samples/sound_keyboard_staff/a1.mp3')->play(12), 0.8;
 
 
 
