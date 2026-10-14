@@ -14,20 +14,18 @@ sub new {
 	
 	die "Sample file not found" unless -f $file;
 	
-	my $self = {
-		file 	=> $file,
-	};
+	my $self = {};
 	
 	$self = bless $self, $class;
 	
-	$self->load_sample();
+	$self->load_sample($file);
 	
 	return $self;
 }
 
 sub load_sample {
 	my $self = shift;
-	my $file = $self->{file};
+	my $file = shift;
 
 	my $out = `ffmpeg -loglevel quiet -i $file -f s16le -acodec pcm_s16le pipe:1`;
 
