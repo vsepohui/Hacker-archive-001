@@ -2,6 +2,10 @@ Hacker is a console DAW for a monks of Perl and UNIX!
 
 Release just for demosceners and professional sound engeeners.
 
+# Dependencies
+
+alsa-utils, espeak-ng, ffmpeg
+
 # Installation
 
 ```
