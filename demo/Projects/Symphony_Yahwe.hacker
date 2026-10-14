@@ -11,15 +11,19 @@ my @a4 = crop pitch (@c, 9),  0.8;
 
 
 
-my @main = (mix (
-	[(@e4, silence 0.3)x16],
-	[silence (0.4), ((@b6, silence 0.3) x 16)]
-))x4;
-
-
-
 mix (
-	\@main,
+
+	# MAIN THEME (FIRST PIANO)
+	[
+		(
+			mix (
+				[(@e4, silence 0.3) x 16],
+				[silence (0.4), ((@b6, silence 0.3) x 16)]
+			)
+		) x 4
+	],
+	
+	# SOLO (SECOND PIANO)
 	[
 		(
 			(
