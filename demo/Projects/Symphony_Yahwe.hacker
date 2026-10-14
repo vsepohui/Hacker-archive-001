@@ -1,0 +1,42 @@
+my @c = sine 'C5', 8;
+
+my @e4 = crop pitch (@c, 4),  0.8;
+my @b6 = crop pitch (@c, 23), 0.8;
+
+my @f5 = crop pitch (@c, 17), 0.8;
+my @b4 = crop pitch (@c, 11), 0.8;
+
+my @e5 = crop pitch (@c, 16), 0.8;
+my @a4 = crop pitch (@c, 9),  0.8;
+
+
+
+my @main = (mix (
+	[(@e4, silence 0.3)x16],
+	[silence (0.4), ((@b6, silence 0.3) x 16)]
+))x4;
+
+
+
+mix (
+	\@main,
+	[
+		(
+			(
+				(@f5, silence 0.3), 
+				(@e5, silence 0.3)
+			) x 16
+		)
+	],
+	[
+		silence (0.4),
+		(
+			(
+				(@b4, silence 0.3), 
+				(@a4, silence 0.3)
+			) x 16
+		)
+	],
+);
+
+
