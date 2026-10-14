@@ -29,7 +29,7 @@ sub render_sample {
 	my $self = shift;
 	my $text = $self->{text};
 	
-	my (undef, $file) = tempfile();
+	my (undef, $file) = tempfile(SUFFIX => '.wav');
 	
 	`espeak-ng "$text" -w $file`;
 	
