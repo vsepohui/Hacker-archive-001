@@ -13,26 +13,13 @@ my @e5 = crop piano('e2'), 0.8;
 my @a4 = crop piano('a1'), 0.8;
 
 
-
-mix (
-
-	# MAIN THEME (FIRST PIANO)
-	[
-		(
-			mix (
-				[(@e4, silence 0.3) x 16],
-				[silence (0.4), ((@b6, silence 0.3) x 16)]
-			)
-		) x 4
-	],
-	
-	# SOLO (SECOND PIANO)
+my @solo = 	mix (
 	[
 		(
 			(
 				(@f5, silence 0.3), 
 				(@e5, silence 0.3)
-			) x 64
+			) x 8
 		)
 	],
 	[
@@ -41,9 +28,40 @@ mix (
 			(
 				(@b4, silence 0.3), 
 				(@a4, silence 0.3)
-			) x 64
+			) x 8
 		)
 	],
+);
+
+mix (
+
+	# MAIN THEME (FIRST PIANO)
+	[
+		(
+			mix (
+				[(@e4, silence 0.3) x 64],
+				[silence (0.4), ((@b6, silence 0.3) x 64)]
+			)
+		) x 4
+	],
+	
+	# SOLO (SECOND PIANO)
+	[
+		silence(3),
+		@solo,
+		silence(1),
+		@solo,
+		silence(1),
+		@solo,
+		silence(1),
+		@solo,
+
+		silence(0.2),
+		@solo,		
+		silence(0.2),
+		@solo,		
+
+	]
 );
 
 
