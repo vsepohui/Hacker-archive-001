@@ -31,7 +31,7 @@ sub render_sample {
 	
 	my (undef, $file) = tempfile(SUFFIX => '.wav');
 	
-	`espeak-ng "$text" -w $file`;
+	`espeak "$text" -w $file`;
 	
 	$self->load_sample($file);
 	
