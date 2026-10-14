@@ -59,8 +59,27 @@ mix (
 		silence(0.2),
 		@solo,		
 		silence(0.2),
-		@solo,		
+		@solo,
 
+		silence(0.2),
+		@solo,
+		silence(0.2),
+		@solo,
+		silence(0.3),
+		@solo,
+		silence(0.3),
+		@solo,
+		silence(0.3),
+		@solo,
+		silence(0.3),
+		@solo,
+		silence(0.3),
+		@solo,
+		silence(0.3),
+		@solo,
+		silence(0.3),
+		@solo,
+				
 	]
 );
 
