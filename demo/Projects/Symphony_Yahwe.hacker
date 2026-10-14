@@ -25,7 +25,7 @@ mix (
 			(
 				(@f5, silence 0.3), 
 				(@e5, silence 0.3)
-			) x 16
+			) x 64
 		)
 	],
 	[
@@ -34,7 +34,7 @@ mix (
 			(
 				(@b4, silence 0.3), 
 				(@a4, silence 0.3)
-			) x 16
+			) x 64
 		)
 	],
 );
