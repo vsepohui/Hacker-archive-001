@@ -1,8 +1,0 @@
-my $s = speech('Hello World!');
-
-my @c1 = ($s->play(0), $s->play(-12), silence(1));
-my @c2 = pitch(@c1 => -7);
-
-mix(\@c1, \@c2);
-
-

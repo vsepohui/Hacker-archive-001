@@ -1,4 +1,0 @@
-chip mix(
-	[load 'Simple-Drum-Machine.hacker'],
-	[load 'One-hand-clapping.hacker'],
-);

@@ -1,5 +1,0 @@
-distortion mix(
-	[sine 13, 30],
-	[silence (0.05), sine 12, 30],
-), 0.1;
-
