@@ -12,13 +12,22 @@ alsa-utils, espeak, ffmpeg
 curl -s https://vsepohui.ru/hacker.sh | sudo sh
 ```
 
+# My Hacker Projects
+
+You can try to hearing my Projects in https://github.com/vsepohui/Hacker-Projects
+
+
+```
+https://github.com/vsepohui/Hacker-Projects/archive/refs/heads/main.zip
+```
+
 
 # Using of Hacker
 
 Play Project:
 ```
-hacker Projects/One-hand-clapping.hacker   
-hacker -i Projects/One-hand-clapping.hacker   
+hacker Projects-file.hacker   
+hacker -i Project-file.hacker   
 ```
 
 Render Project (in RAW format):
