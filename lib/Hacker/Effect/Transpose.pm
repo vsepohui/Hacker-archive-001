@@ -10,8 +10,12 @@ sub new {
 	my $class = shift;
 	my $value = shift;
 
-	use Carp;
-	confess $value unless $value =~ /^-?\d+$/;
+	
+	if ($value =~ /^-?\d+$/) {
+		# ok
+	} else {
+		$value = $class->parse_note($value);
+	}
 	
 	return $class->SUPER::new(value => $value);
 }

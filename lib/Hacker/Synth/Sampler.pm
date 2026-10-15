@@ -12,7 +12,7 @@ sub new {
 	my $file  = shift or die "Sample file is not specified";
 	
 	
-	die "Sample file not found" unless -f $file;
+	die "Sample file $file not found" unless -f $file;
 	
 	my $self = {};
 	
